@@ -2,11 +2,12 @@
 <html>
 <head>
 
-<title>NBI Fibre Reward</title>
+<title>NBI Fibre Promotion</title>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6C0ZMVVBR"></script>
 
 <script>
@@ -16,44 +17,97 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-S6C0ZMVVBR');
 
-function trackClick() {
-  gtag('event', 'linkedin_click');
+function trackClick(){
+  gtag('event','linkedin_button_click',{
+    event_category:'referral',
+    event_label:'NBI referral'
+  });
 }
+
+window.onload = function(){
+
+  var ua = navigator.userAgent;
+
+  if(ua.includes("LinkedInApp")){
+    document.getElementById("browserTip").style.display="block";
+  }
+
+};
 </script>
 
 <style>
+
 body{
-font-family: Arial;
+font-family: Arial, Helvetica, sans-serif;
+background:#f5f7fa;
 text-align:center;
 padding:40px;
 }
 
+.container{
+background:white;
+padding:40px;
+border-radius:10px;
+max-width:500px;
+margin:auto;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+h1{
+color:#003366;
+}
+
 .button{
+display:inline-block;
 background:#0073e6;
 color:white;
-padding:15px 25px;
+padding:15px 30px;
 font-size:18px;
 border-radius:6px;
 text-decoration:none;
-display:inline-block;
+margin-top:20px;
 }
+
+.tip{
+display:none;
+background:#fff3cd;
+color:#856404;
+padding:12px;
+margin-top:20px;
+border-radius:6px;
+font-size:14px;
+}
+
 </style>
 
 </head>
 
 <body>
 
-<h2>NBI Fibre Broadband Promotion</h2>
+<div class="container">
 
-<p>Tap the button below to open the official offer page.</p>
+<h1>NBI Fibre Broadband Promotion</h1>
+
+<p>
+New customers can choose a reward worth up to <b>€95</b>.
+</p>
 
 <a class="button"
 href="https://rewards.nbi.ie/?rafid=6147520C3A"
+target="_blank"
+rel="noopener"
 onclick="trackClick()">
 
 Open Promotion
 
 </a>
+
+<div id="browserTip" class="tip">
+If the page does not load correctly in the LinkedIn app,<br>
+tap <b>•••</b> and select <b>"Open in browser"</b>.
+</div>
+
+</div>
 
 </body>
 </html>
