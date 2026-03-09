@@ -2,46 +2,117 @@
 <html>
 <head>
 
-<title>NBI Fibre Offer</title>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<title>NBI Fibre Broadband Promotion</title>
+
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6C0ZMVVBR"></script>
+
 <script>
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
+
 gtag('js', new Date());
 gtag('config', 'G-S6C0ZMVVBR');
 
-function redirectUser() {
+const referral = "https://rewards.nbi.ie/?rafid=6147520C3A";
 
-  const target = "https://rewards.nbi.ie/?rafid=6147520C3A";
+function isSocialApp(){
 
-  gtag('event', 'referral_click', {
-    event_category: 'outbound',
-    event_label: 'NBI referral'
-  });
+const ua = navigator.userAgent;
 
-  setTimeout(function(){
-    window.location.replace(target);
-  }, 400);
+return (
+ua.includes("LinkedInApp") ||
+ua.includes("FBAN") ||
+ua.includes("FBAV") ||
+ua.includes("Instagram")
+);
+
 }
 
-window.onload = redirectUser;
+window.onload = function(){
+
+if(isSocialApp()){
+
+document.getElementById("qrBlock").style.display="block";
+
+gtag('event','social_app_qr');
+
+}
+else{
+
+gtag('event','browser_redirect');
+
+setTimeout(function(){
+window.location.href = referral;
+},300);
+
+}
+
+}
 
 </script>
 
-<noscript>
-<meta http-equiv="refresh" content="1; url=https://rewards.nbi.ie/?rafid=6147520C3A">
-</noscript>
+<style>
+
+body{
+font-family:Arial, Helvetica, sans-serif;
+background:#f5f7fa;
+text-align:center;
+padding:40px;
+}
+
+.container{
+background:white;
+padding:40px;
+border-radius:10px;
+max-width:500px;
+margin:auto;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+h1{
+color:#003366;
+}
+
+.qr img{
+width:230px;
+margin-top:20px;
+}
+
+.small{
+font-size:13px;
+color:#666;
+margin-top:15px;
+}
+
+</style>
 
 </head>
 
 <body>
 
-<p>Opening NBI promotion…</p>
+<div class="container" id="qrBlock" style="display:none">
+
+<h1>NBI Fibre Broadband Promotion</h1>
+
+<p>
+Scan the QR code below to open the offer in your browser.
+</p>
+
+<div class="qr">
+
+<img src="https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=https%3A%2F%2Frewards.nbi.ie%2F%3Frafid%3D6147520C3A">
+
+</div>
+
+<p class="small">
+Scanning opens the promotion in Safari or Chrome where the offer works correctly.
+</p>
+
+</div>
 
 </body>
 </html>
