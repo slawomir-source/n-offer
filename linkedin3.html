@@ -1,180 +1,110 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>NBI Fibre Broadband Promotion</title>
 
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-S6C0ZMVVBR"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-S6C0ZMVVBR');
-  </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <style>
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #f5f7fa;
-      margin: 0;
-      padding: 0;
-      color: #1f2937;
-    }
-    .wrap {
-      max-width: 680px;
-      margin: 40px auto;
-      background: #ffffff;
-      border-radius: 12px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-      padding: 32px 24px;
-      text-align: center;
-    }
-    h1 {
-      margin-top: 0;
-      color: #003366;
-      font-size: 28px;
-    }
-    p {
-      line-height: 1.5;
-      margin: 12px 0;
-    }
-    .hidden {
-      display: none;
-    }
-    .btn {
-      display: inline-block;
-      background: #0073e6;
-      color: #fff;
-      text-decoration: none;
-      padding: 14px 24px;
-      border-radius: 8px;
-      font-size: 18px;
-      margin-top: 16px;
-    }
-    .tip {
-      margin-top: 20px;
-      padding: 14px;
-      border-radius: 8px;
-      background: #fff7db;
-      color: #7a5d00;
-      text-align: left;
-    }
-    .qr {
-      margin-top: 24px;
-    }
-    .qr img {
-      width: 220px;
-      max-width: 90%;
-      height: auto;
-      border: 1px solid #e5e7eb;
-      border-radius: 8px;
-      background: white;
-      padding: 10px;
-    }
-    .small {
-      font-size: 13px;
-      color: #6b7280;
-      word-break: break-all;
-      margin-top: 12px;
-    }
-  </style>
+<title>NBI Fibre Broadband Promotion</title>
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6C0ZMVVBR"></script>
+
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+
+gtag('js', new Date());
+gtag('config', 'G-S6C0ZMVVBR');
+
+const referralLink = "https://rewards.nbi.ie/?rafid=6147520C3A";
+
+function isLinkedIn() {
+  return navigator.userAgent.includes("LinkedInApp");
+}
+
+window.onload = function(){
+
+  if(isLinkedIn()){
+
+    document.getElementById("qrBlock").style.display="block";
+
+    gtag('event','linkedin_qr_display');
+
+  } else {
+
+    gtag('event','browser_redirect');
+
+    setTimeout(function(){
+      window.location.href = referralLink;
+    },300);
+
+  }
+
+}
+</script>
+
+<style>
+
+body{
+font-family:Arial, Helvetica, sans-serif;
+background:#f5f7fa;
+text-align:center;
+padding:40px;
+}
+
+.container{
+background:white;
+padding:40px;
+border-radius:10px;
+max-width:500px;
+margin:auto;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+h1{
+color:#003366;
+}
+
+.qr{
+margin-top:25px;
+}
+
+.qr img{
+width:230px;
+}
+
+.small{
+font-size:13px;
+color:#666;
+margin-top:10px;
+}
+
+</style>
+
 </head>
+
 <body>
-  <div class="wrap">
-    <h1>NBI Fibre Broadband Promotion</h1>
 
-    <div id="browserMode" class="hidden">
-      <p>Opening the NBI promotion…</p>
-      <p>Please wait.</p>
-    </div>
+<div class="container" id="qrBlock" style="display:none;">
 
-    <div id="inAppMode" class="hidden">
-      <p>To keep the full offer link working correctly, please open this page in your browser or scan the QR code below.</p>
+<h1>NBI Fibre Broadband Promotion</h1>
 
-      <a id="openLinkBtn"
-         class="btn"
-         href="https://rewards.nbi.ie/?rafid=6147520C3A"
-         target="_blank"
-         rel="noopener noreferrer">
-        Open Promotion
-      </a>
+<p>
+Scan the QR code below to open the promotion in your browser.
+</p>
 
-      <div class="tip">
-        <strong>LinkedIn / WhatsApp app:</strong><br>
-        Tap the menu in the top-right corner and choose <strong>Open in browser</strong>.
-      </div>
+<div class="qr">
 
-      <div class="qr">
-        <p><strong>Scan QR code to open in Safari / Chrome:</strong></p>
-        <img
-          src="https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=https%3A%2F%2Frewards.nbi.ie%2F%3Frafid%3D6147520C3A"
-          alt="QR code for NBI referral link">
-      </div>
+<img src="https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=https%3A%2F%2Frewards.nbi.ie%2F%3Frafid%3D6147520C3A">
 
-      <div class="small">
-        https://rewards.nbi.ie/?rafid=6147520C3A
-      </div>
-    </div>
-  </div>
+</div>
 
-  <script>
-    const targetUrl = "https://rewards.nbi.ie/?rafid=6147520C3A";
-    const ua = navigator.userAgent || navigator.vendor || window.opera;
+<p class="small">
+Scanning opens the link in Safari/Chrome where the offer works correctly.
+</p>
 
-    function isLinkedInApp() {
-      return /LinkedInApp/i.test(ua);
-    }
+</div>
 
-    function isWhatsAppApp() {
-      return /WhatsApp/i.test(ua);
-    }
-
-    function isFacebookOrInstagramInApp() {
-      return /FBAN|FBAV|Instagram/i.test(ua);
-    }
-
-    function isLikelyInAppBrowser() {
-      return isLinkedInApp() || isWhatsAppApp() || isFacebookOrInstagramInApp();
-    }
-
-    function showBrowserMode() {
-      document.getElementById("browserMode").classList.remove("hidden");
-      gtag('event', 'auto_redirect_page_view', {
-        event_category: 'referral',
-        event_label: 'browser_auto_redirect'
-      });
-
-      setTimeout(function () {
-        window.location.href = targetUrl;
-      }, 300);
-    }
-
-    function showInAppMode(appName) {
-      document.getElementById("inAppMode").classList.remove("hidden");
-      gtag('event', 'in_app_page_view', {
-        event_category: 'referral',
-        event_label: appName
-      });
-
-      document.getElementById("openLinkBtn").addEventListener("click", function () {
-        gtag('event', 'manual_open_click', {
-          event_category: 'referral',
-          event_label: appName
-        });
-      });
-    }
-
-    if (isLinkedInApp()) {
-      showInAppMode("linkedin");
-    } else if (isWhatsAppApp()) {
-      showInAppMode("whatsapp");
-    } else if (isFacebookOrInstagramInApp()) {
-      showInAppMode("facebook_instagram");
-    } else {
-      showBrowserMode();
-    }
-  </script>
 </body>
 </html>
